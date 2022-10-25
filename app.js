@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const moment = require("moment");
 
 var db = require('./config/db')
 var flash = require('express-flash')
@@ -12,6 +13,7 @@ var methodOverride = require('method-override')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bukuRouter = require('./routes/buku')
+var anggotaRouter = require('./routes/anggota')
 
 var app = express();
 
@@ -40,6 +42,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/buku', bukuRouter)
+app.use('/anggota', anggotaRouter)
+
+app.use((req, res, next)=>{
+  res.locals.moment = moment;
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

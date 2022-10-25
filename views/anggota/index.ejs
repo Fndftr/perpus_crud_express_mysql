@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>List Anggota</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">List Anggota Perpustakaan dengan Mysql, CRUD dan Express</span>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row mt-2">
+          <div class="col-md-12 text-center">
+            <h2>Daftar Anggota</h2>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-12">
+            <% if(messages.error){ %>
+              <div class="alert alert-danger"> 
+                <%= messages.error %>
+                </div>
+              <% } %>
+              <% if(messages.success){ %>
+                <div class="alert alert-success"> 
+                  <%= messages.success %>
+                  </div>
+                <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 ml-5">
+          <%- include('add_anggota.ejs') %>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-8">
+       <table class="table table-bordered ml-5 md-5 " id="list_a">
+        <thead>
+          <tr>
+            <th>Nim</th>
+            <th>Nama</th>
+            <th>Gender</th>
+            <th>Alamat</th>
+            <th>No Telephon</th>
+            <th>Email</th>
+            <th>Tanggal Lahir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((data) => { %>
+          <tr>
+            <td><%= data.nim %></td>
+            <td><%= data.nama %></td>
+            <td><%= data.Jns_kelamin %></td>
+            <td><%= data.alamat %></td>
+            <td><%= data.telp %></td>
+            <td><%= data.email %></td>
+            <td><%= data.ttl.getDate()%>/<%= data.ttl.getMonth() %>/<%= data.ttl.getFullYear()%></td>
+            <td>
+              <a href="javascript:void()"
+              data-nim="<%= data.nim %>"
+              data-nama="<%= data.nama %>"
+              data-Jns_kelamin="<%= data.Jns_kelamin %>"
+              data-alamat="<%= data.alamat %>"
+              data-telp="<%= data.telp %>"
+              data-email="<%= data.email %>"
+              data-ttl="<%= data.ttl %>"
+              class="btn btn-info btn-sm button-update">Edit</a>
+              <%- include('edit_anggota.ejs') %>
+              <form action="anggota/delete/<%= data.nim %>?_method=DELETE" method="post">
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau di hapus ?')">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  <script>
+    $("#list_a").on("click", ".button-update", function() {
+      let nim = $(this).data("nim")
+      let nama = $(this).data("nama")
+      let Jns_kelamin = $(this).data("Jns_kelamin")
+      let alamat = $(this).data("alamat")
+      let telp = $(this).data("telp")
+      let email = $(this).data("email")
+      let ttl = $(this).data("ttl")
+
+      $("#editanggota").modal("show")
+
+      $(".nim").val(nim)
+      $(".nama").val(nama)
+      $(".Jns_kelamin").val(Jns_kelamin)
+      $(".alamat").val(alamat)
+      $(".telp").val(telp)
+      $(".email").val(email)
+      $(".ttl").val(ttl)
+    }) 
+  </script>
+</html>

@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const bukuController = require('../controller/bukuController')
 
-
+//router buku
 router.get('/', bukuController.index);
 router.post('/add_buku', bukuController.addBuku)
 router.put('/edit_buku', bukuController.update)
