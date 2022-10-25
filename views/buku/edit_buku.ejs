@@ -1,0 +1,43 @@
+<!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="edit_buku" tabindex="-1" role="dialog" aria-labelledby="edit_bukuLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="edit_bukuLabel">Edit Buku</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <form action="buku/edit_buku?_method=PUT" method="post">   
+            <div class="form-group col-md-12">
+                <label for="">kode buku</label> 
+                <input type="number" name="kode_buku" class="form-control kode_buku" required>     
+            </div>
+            <div class="form-group col-md-12">
+                <label for="">Judul</label> 
+                <input type="text" name="judul" class="form-control judul" required>     
+            </div>
+            <div class="form-group col-md-12">
+                <label for="">Pengarang</label> 
+                <input type="text" name="pengarang" class="form-control pengarang" required>     
+            </div>      
+            <div class="form-group col-md-12">
+                <label for="">Penerbit</label> 
+                <input type="text" name="penerbit" class="form-control penerbit" required>     
+            </div>      
+            <div class="form-group col-md-12">
+                <label for="">Tahun</label> 
+                <input type="text" name="tahun" class="form-control tahun" required>     
+            </div>              
+                 <div class="modal-footer">
+                    <input type="hidden" name="id" class="id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Edit Buku</button>
+                </div>
+        </form>
+      </div>
+    </div>
+  </div>

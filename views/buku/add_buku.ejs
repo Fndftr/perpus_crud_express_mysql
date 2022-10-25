@@ -1,0 +1,46 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBuku">
+    Tambah Buku
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addBuku" tabindex="-1" role="dialog" aria-labelledby="addBukuLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBukuLabel">Tambah Buku</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <form action="buku/add_buku" method="post">   
+            <div class="form-group col-md-12">
+                <label for="">kode buku</label> 
+                <input type="number" name="kode_buku" class="form-control" required>     
+            </div>
+            <div class="form-group col-md-12">
+                <label for="">Judul</label> 
+                <input type="text" name="judul" class="form-control" required>     
+            </div>
+            <div class="form-group col-md-12">
+                <label for="">Pengarang</label> 
+                <input type="text" name="pengarang" class="form-control" required>     
+            </div>      
+            <div class="form-group col-md-12">
+                <label for="">Penerbit</label> 
+                <input type="text" name="penerbit" class="form-control" required>     
+            </div>      
+            <div class="form-group col-md-12">
+                <label for="">Tahun</label> 
+                <input type="text" name="tahun" class="form-control" required>     
+            </div>              
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah Buku</button>
+                </div>
+        </form>
+      </div>
+    </div>
+  </div>
